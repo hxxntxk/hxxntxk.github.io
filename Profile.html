@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필</title>
+    <link rel="stylesheet" href="css/profilestyle.css">
+    <script src="https://kit.fontawesome.com/8ae869b26e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Prompt:300,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400,700&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- 헤더 시작 -->
+        <header>
+            <div class="left-blank">
+                <!-- 레이아웃을 위한 필요 여백 -->
+            </div>
+            <div class="logo">
+                <a href="#">
+                    <img src="images/logo.PNG" alt="로고">
+                </a>
+            </div>
+            <div class="header-menu-1">
+                <nav>
+                    <ul>
+                        <li><a href="#">Log In</a></li>
+                        <li><a href="#">Sign Up</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- <div class="header-menu-2"> -->
+            <div class="menu" onclick="sideMenu()"></div>
+            <div class="side_menu" onclick="sideMenu()">
+                <li><a href="#">Log In</a></li>
+                <li><a href="#">Sign Up</a></li>
+            </div>
+            <!-- </div> -->
+            <nav class="mid-nav">
+                <ul>
+                    <li class="active">
+                        <div>
+                            <p><a href="#">Home</a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p><a href="#">Shop All</a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p><a href="#">Our Story</a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p><a href="#">My Page</a></p>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!-- 헤더 끝 -->
+
+        <main>
+            <!-- PC -->
+            <div id="container">
+                <div id="contents">
+                    <div class="titleArea">
+                        <h1>Profile</h1>
+                    </div>
+                    <div class="typeWrite">
+                        <table>
+                            <colgroup>
+                                <col style="width:200px;">
+                                <col style="width:1000px;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">아이디
+                                        <img src="images/bluecomma.gif" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="member_id" name="member_id"
+                                            fw-filter="isFill&amp;isFill&amp;isMin[4]&amp;isMax[16]&amp;isIdentity"
+                                            fw-label="아이디" fw-msg="" class="inputTypeText" placeholder=""
+                                            readonly="readonly" value="" type="text"> (영문소문자/숫자, 4~16자)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">새 비밀번호
+                                        <img src="images/bluecomma.gif" alt="필수">
+                                    </th>
+                                    <td>
+                                        <div class="eTooltip">
+                                            <input type="password" id="new_passwd" fw-filter="isMin[4]&amp;isMax[16]"
+                                                onchange="check_pw()">
+                                            <span class="edge"></span>
+                                        </div>
+                                        (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">새 비밀번호 확인
+                                        <img src="images/bluecomma.gif" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input type="password" fw-filter="isMin[4]&amp;isMax[16]"
+                                            id="new_passwd_confirm" onchange="check_pw()">&nbsp;<span id="check"></span>
+                                    </td>
+                                    <span id="new_pwConfirmMsg"></span>
+                                    </td>
+                                </tr>
+                                <tr style="display:1">
+                                    <th scope="row" id="">이름
+                                        <img src="images/bluecomma.gif" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input type="text" fw-filter="isFill&amp;isMax[30]" value="홍현탁"
+                                            readonly="readonly">
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <th scope="row">주소
+                                        <img src="images/bluecomma.gif" class="displaynone" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="postcode1" fw-filter="isLengthRange[1][14]" fw-label="우편번호 1"
+                                            readonly="readonly" maxlength="14" value="" type="text">
+                                        <button type="button" class="button" onclick="openZipSearch()">우편번호</button><br>
+                                        <input id="addr1" fw-filter="" fw-label="주소" fw-msg="" placeholder=""
+                                            readonly="readonly" value="" type="text"> 기본주소<br>
+                                        <input id="addr2" fw-filter="" fw-label="주소" fw-msg="" placeholder="" value=""
+                                            type="text"> 상세주소 (선택입력가능)
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <th scope="row">일반전화
+                                        <img src="images/bluecomma.gif" class="" alt="필수">
+                                    </th>
+                                    <td>
+                                        <select id="phone1" name="phone[]" fw-filter="isNumber&amp;isFill&amp;isNumber"
+                                            fw-label="일반전화" fw-alone="N" fw-msg="">
+                                            <option value="02">02</option>
+                                            <option value="031">031</option>
+                                            <option value="032">032</option>
+                                            <option value="033">033</option>
+                                            <option value="041">041</option>
+                                            <option value="042">042</option>
+                                            <option value="043">043</option>
+                                            <option value="044">044</option>
+                                            <option value="051">051</option>
+                                            <option value="052">052</option>
+                                            <option value="053">053</option>
+                                            <option value="054">054</option>
+                                            <option value="055">055</option>
+                                            <option value="070">070</option>
+                                            <option value="010">010</option>
+                                            <option value="011">011</option>
+                                            <option value="016">016</option>
+                                            <option value="017">017</option>
+                                            <option value="018">018</option>
+                                            <option value="019">019</option>
+                                        </select>-<input id="phone2" name="phone[]" maxlength="4"
+                                            fw-filter="isNumber&amp;isFill&amp;isNumber" fw-label="일반전화" fw-alone="N"
+                                            fw-msg="" value="" type="text">-<input id="phone3" name="phone[]"
+                                            maxlength="4" fw-filter="isNumber&amp;isFill&amp;isNumber" fw-label="일반전화"
+                                            fw-alone="N" fw-msg="" value="" type="text">
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <th scope="row">휴대전화
+                                        <img src="images/bluecomma.gif" class="displaynone" alt="필수">
+                                    </th>
+                                    <td>
+                                        <select id="mobile1" name="mobile[]" fw-filter="isNumber" fw-label="휴대전화"
+                                            fw-alone="N" fw-msg="">
+                                            <option value="010">010</option>
+                                            <option value="011">011</option>
+                                            <option value="016">016</option>
+                                            <option value="017">017</option>
+                                            <option value="018">018</option>
+                                            <option value="019">019</option>
+                                        </select>-<input id="mobile2" name="mobile[]" maxlength="4" fw-filter="isNumber"
+                                            fw-label="휴대전화" fw-alone="N" fw-msg="" value="" type="text">-<input
+                                            id="mobile3" name="mobile[]" maxlength="4" fw-filter="isNumber"
+                                            fw-label="휴대전화" fw-alone="N" fw-msg="" value="" type="text">
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <th scope="row">SMS 수신여부
+                                        <img src="images/bluecomma.gif" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="is_sms0" name="is_sms" fw-filter="isFill" fw-label="is_sms" fw-msg=""
+                                            value="T" type="radio">
+                                        <label for="is_sms0">수신함</label>
+                                        <input id="is_sms1" name="is_sms" fw-filter="isFill" fw-label="is_sms" fw-msg=""
+                                            value="F" type="radio" checked="checked">
+                                        <label for="is_sms1">수신안함</label>
+                                        <p>쇼핑몰에서 제공하는 유익한 이벤트 소식을 SMS로 받으실 수 있습니다.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">이메일
+                                        <img src="images/bluecomma.gif" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="email1" name="email1" fw-filter="isFill&amp;isEmail" fw-label="이메일"
+                                            fw-alone="N" fw-msg="" value="" type="text">
+                                        <span id="emailMsg"></span>
+                                        <p class="displaynone">이메일 주소 변경 시 로그아웃 후 재인증을 하셔야만 로그인이 가능합니다.<br>인증 메일은 24시간
+                                            동안 유효하며, 유효 시간이 만료된 후에는 가입 정보로 로그인 하셔서 재발송 요청을 해주시기 바랍니다.</p>
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <th scope="row">이메일 수신여부
+                                        <img src="images/bluecomma.gif" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="is_news_mail0" name="is_news_mail" fw-filter="isFill"
+                                            fw-label="is_news_mail" fw-msg="" value="T" type="radio">
+                                        <label for="is_news_mail0">수신함</label>
+                                        <input id="is_news_mail1" name="is_news_mail" fw-filter="isFill"
+                                            fw-label="is_news_mail" fw-msg="" value="F" type="radio" checked="checked">
+                                        <label for="is_news_mail1">수신안함</label>
+                                        <p>쇼핑몰에서 제공하는 유익한 이벤트 소식을 이메일로 받으실 수 있습니다.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="subArea">
+                        <h2>추가정보</h2>
+                    </div>
+                    <div class="typeWrite">
+                        <table>
+                            <colgroup>
+                                <col style="width:200px;">
+                                <col style="width:1000px;">
+                            </colgroup>
+                            <tbody>
+                                <tr class="">
+                                    <th scope="row">생년월일
+                                        <img src="images/bluecomma.gif" class="displaynone" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="birth_year" name="birth_year" fw-filter="" fw-label="생년월일" fw-msg=""
+                                            class="inputTypeText" placeholder="" maxlength="4" value="" type="text"> 년
+                                        <input id="birth_month" name="birth_month" fw-filter="" fw-label="생년월일"
+                                            fw-msg="" class="inputTypeText" placeholder="" maxlength="2" value=""
+                                            type="text"> 월
+                                        <input id="birth_day" name="birth_day" fw-filter="" fw-label="생년월일" fw-msg=""
+                                            class="inputTypeText" placeholder="" maxlength="2" value="" type="text"> 일
+                                        <span class="calendar_bt">
+                                            <input id="is_solar_calendar0" name="is_solar_calendar" fw-filter=""
+                                                fw-label="생년월일" fw-msg="" value="T" type="radio" checked="checked">
+                                            <label for="is_solar_calendar0">양력</label>
+                                            <input id="is_solar_calendar1" name="is_solar_calendar" fw-filter=""
+                                                fw-label="생년월일" fw-msg="" value="F" type="radio">
+                                            <label for="is_solar_calendar1">음력</label>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="justify">
+                        <a href="#none" class="btnSubmitFix sizeM" onclick="memberEditAction()">회원정보수정</a>
+                        <a href="/index.html" class="btnEmFix sizeM">취소</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 모바일 -->
+            <div class="container_m">
+                <div id="contents">
+                    <div class="titleArea_m">
+                        <h1>Profile</h1>
+                    </div>
+                    <div class="typeWrite">
+                        <table>
+                            <colgroup>
+                                <col style="width:100px;">
+                                <col style="width:auto;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row_m">아이디
+                                        <img src="images/bluecomma.gif" width="5" height="5" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="member_id" name="member_id"
+                                            fw-filter="isFill&amp;isFill&amp;isMin[4]&amp;isMax[16]&amp;isIdentity"
+                                            fw-label="아이디" fw-msg="" class="inputTypeText" placeholder=""
+                                            readonly="readonly" value="" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row_m">새 비밀번호
+                                        <img src="images/bluecomma.gif" class="" width="5" height="5" alt="필수">
+                                    </th>
+                                    <td>
+                                        <div class="ec-base-tooltip-area">
+                                            <span class="eTip">
+                                                <input id="passwd_m" name="passwd_m" fw-filter="isMin[4]&amp;isMax[16]"
+                                                    fw-label="비밀번호" autocomplete="off" maxlength="16" type="password">
+                                            </span>
+                                        </div>
+                                        <p class="ec-base-help typeDash">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row_m">새 비밀번호 확인
+                                        <img src="images/bluecomma.gif" width="5" height="5" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="password_m" name="password_m" fw-filter="isMatch[passwd]"
+                                            fw-label="비밀번호 확인" fw-msg="비밀번호가 일치하지 않습니다." autocomplete="off"
+                                            maxlength="16" type="password">
+                                        <span id="pwConfirmMsg"></span>
+                                    </td>
+                                </tr>
+                                <tr style="display:1">
+                                    <th scope="row_m" id="">이름
+                                        <img src="images/bluecomma.gif" width="5" height="5" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="name_m" name="name_m" fw-filter="isFill&amp;isMax[30]" fw-label="이름"
+                                            fw-msg="" class="ec-member-name" placeholder="" maxlength="30"
+                                            readonly="readonly" value="홍현탁" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row_m">주소
+                                        <img src="images/bluecomma.gif" class="displaynone" width="5" height="5"
+                                            alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="postcode1_m" name="postcode1" fw-filter="isLengthRange[1][14]"
+                                            fw-label="우편번호1" fw-msg="" class="inputTypeText" placeholder=""
+                                            readonly="readonly" maxlength="14" value="" type="text">
+                                        <button type="button" class="button_m"
+                                            onclick="openZipSearch()">우편번호</button><br>
+                                        <input id="addr1_m" name="addr1" fw-filter="기본 주소" fw-label="주소" fw-msg=""
+                                            class="inputTypeText" placeholder="" readonly="readonly" value=""
+                                            type="text"><br>
+                                        <input id="addr2_m" name="addr2" fw-filter="" fw-label="주소" fw-msg=""
+                                            class="inputTypeText" placeholder="상세 주소는 선택입력이 가능합니다." value=""
+                                            type="text"> <span class="ec-base-help typeDash"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row_m">일반전화
+                                        <img src="images/bluecomma.gif" class="" width="5" height="5" alt="필수">
+                                    </th>
+                                    <td>
+                                        <select id="phone1_m" name="phone1_m"
+                                            fw-filter="isNumber&amp;isFill&amp;isNumber" fw-label="일반전화" fw-alone="N"
+                                            fw-msg="">
+                                            <option value="02">02</option>
+                                            <option value="031">031</option>
+                                            <option value="032">032</option>
+                                            <option value="033">033</option>
+                                            <option value="041">041</option>
+                                            <option value="042">042</option>
+                                            <option value="043">043</option>
+                                            <option value="044">044</option>
+                                            <option value="051">051</option>
+                                            <option value="052">052</option>
+                                            <option value="053">053</option>
+                                            <option value="054">054</option>
+                                            <option value="055">055</option>
+                                            <option value="061">061</option>
+                                            <option value="062">062</option>
+                                            <option value="063">063</option>
+                                            <option value="064">064</option>
+                                            <option value="010">010</option>
+                                            <option value="011">011</option>
+                                            <option value="016">016</option>
+                                            <option value="017">017</option>
+                                            <option value="018">018</option>
+                                            <option value="019">019</option>
+                                        </select>-<input id="phone2_m" name="phone2_m" maxlength="4"
+                                            fw-filter="isNumber&amp;isFill&amp;isNumber" fw-label="일반전화" fw-alone="N"
+                                            fw-msg="" value="" type="text">-<input id="phone3_m" name="phone3_m"
+                                            maxlength="4" fw-filter="isNumber&amp;isFill&amp;isNumber" fw-label="일반전화"
+                                            fw-alone="N" fw-msg="" value="" type="text">
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <th scope="row_m">휴대전화
+                                        <img src="images/bluecomma.gif" class="displaynone" width="5" height="5"
+                                            alt="필수">
+                                    </th>
+                                    <td>
+                                        <select id="mobile1_m" name="mobile1_m" fw-filter="isNumber" fw-label="휴대전화"
+                                            fw-alone="N" fw-msg="">
+                                            <option value="010">010</option>
+                                            <option value="011">011</option>
+                                            <option value="016">016</option>
+                                            <option value="017">017</option>
+                                            <option value="018">018</option>
+                                            <option value="019">019</option>
+                                        </select>-<input id="mobile2_m" name="mobile2_m" maxlength="4"
+                                            fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg="" value=""
+                                            type="text">-<input id="mobile3_m" name="mobile3_m" maxlength="4"
+                                            fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg="" value=""
+                                            type="text">
+                                    </td>
+                                </tr>
+                                <tr class="sms_m">
+                                    <th scope="row_m">SMS<br>수신여부
+                                        <img src="images/bluecomma.gif" width="5" height="5" alt="필수">
+                                    </th>
+                                    <td class="middle_m">
+                                        <input id="is_sms0" name="is_sms" fw-filter="isFill" fw-label="is_sms" fw-msg=""
+                                            value="T" type="radio">
+                                        <label for="is_sms0">수신함</label>
+                                        <input id="is_sms1" name="is_sms" fw-filter="isFill" fw-label="is_sms" fw-msg=""
+                                            value="F" type="radio" checked="checked">
+                                        <label for="is_sms1">수신안함</label>
+                                    </td>
+                                </tr>
+                                <tr class="emailCheck_m">
+                                    <th scope="row_m">이메일
+                                        <img src="images/bluecomma.gif" width="5" height="5" alt="필수">
+                                    </th>
+                                    <td>
+                                        <input id="email1_m" name="email1_m" fw-filter="isFill&amp;isEmail"
+                                            fw-label="이메일" fw-alone="N" fw-msg="" value="" type="text">
+                                        <button type="button" class="btnBasic_m" onclick="checkEmail('')">중복확인</button>
+                                        <p id="emailMsg"></p>
+                                        <p class="ec-base-help typeDash displaynone">이메일 주소 변경 시 로그아웃 후 재인증을 하셔야만 로그인이
+                                            가능합니다.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr class="email_m">
+                                    <th scope="row_m">이메일<br>수신여부
+                                        <img src="images/bluecomma.gif" width="5" height="5" alt="필수">
+                                    </th>
+                                    <td class="middle"><input id="is_news_mail0" name="is_news_mail" fw-filter="isFill"
+                                            fw-label="is_news_mail" fw-msg="" value="T" type="radio">
+                                        <label for="is_news_mail0">수신함</label>
+                                        <input id="is_news_mail1" name="is_news_mail" fw-filter="isFill"
+                                            fw-label="is_news_mail" fw-msg="" value="F" type="radio" checked="checked">
+                                        <label for="is_news_mail1">수신안함</label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="subArea_m">
+                        <h4>추가정보</h4>
+                    </div>
+                    <div class="typeWrite2">
+                        <table>
+                            <colgroup>
+                                <col style="width:100px;">
+                                <col style="width:auto;">
+                            </colgroup>
+                            <tbody>
+                                <tr class="">
+                                    <th scope="row_m">생년월일
+                                        <img src="images/bluecomma.gif" class="displaynone" width="5" height="5"
+                                            alt="필수">
+                                    </th>
+                                    <td>
+                                        <p class="calendar_m">
+                                            <input id="is_solar_calendar0" name="is_solar_calendar" fw-filter=""
+                                                fw-label="생년월일" fw-msg="" value="T" type="radio"
+                                                checked="checked"><label for="is_solar_calendar0">양력</label>
+                                            <input id="is_solar_calendar1" name="is_solar_calendar" fw-filter=""
+                                                fw-label="생년월일" fw-msg="" value="F" type="radio"><label
+                                                for="is_solar_calendar1">음력</label>
+                                        </p>
+                                        <input id="birth_year_m" name="birth_year" fw-filter="" fw-label="생년월일"
+                                            fw-msg="" class="inputTypeText" placeholder="" maxlength="4" value=""
+                                            type="text"> 년
+                                        <input id="birth_month_m" name="birth_month" fw-filter="" fw-label="생년월일"
+                                            fw-msg="" class="inputTypeText" placeholder="" maxlength="2" value=""
+                                            type="text"> 월
+                                        <input id="birth_day_m" name="birth_day" fw-filter="" fw-label="생년월일" fw-msg=""
+                                            class="inputTypeText" placeholder="" maxlength="2" value="" type="text"> 일
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="justify_m">
+                        <a href="#none" class="btnSubmit_m" onclick="memberEditAction()">회원정보수정</a>
+                        <a href="/index.html" class="btnEm_m">취소</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- 메인 끝 -->
+        <!-- 푸터 시작 -->
+        <footer>
+            <div class="footer-box">
+                <div class="footer-menu">
+                    <ul class="footer_bunch_1">
+                        <li><a href="#">HOME</a></li><span>|</span>
+                        <li><a href="#">GUIDE</a></li><span>|</span>
+                        <li><a href="#">AGREEMENT</a></li><span>|</span>
+                        <li><a href="#">PRIVACY POLICY</a></li>
+                    </ul>
+
+                    <ul class="footer_bunch_2">
+                        <li>Customer Service</li>
+                        <li>cs@coldframeofficial.com <span>|</span> <a href="#">02-477-0522</a></li>
+                        <li>평일 09:00 - 17:00, 주말 및 공휴일 휴무</li>
+
+                        <li>(주)콜드프레임 <span>|</span> 박혜희</li>
+                        <li>메일 문의 <a href="#">info@coldframeofficial.com</a></li>
+                        <li>191-88-02302 <span>|</span> 제 2022-서울용산-0506 호</li>
+                        <li>(04404) 서울 용산구 한남동 736-5 대원빌딩 5층</li>
+                    </ul>
+
+                    <div class="sns-lists">
+                        <a href="#"><img src="images/kakaotalk.PNG" alt="sns아이콘"></a>
+                        <a href="#"><img src="images/facebook.png" alt="sns아이콘"></a>
+                        <a href="#"><img src="images/instagram.png" alt="sns아이콘"></a>
+                        <a href="#"><img src="images/youtube.png" alt="sns아이콘"></a>
+                    </div>
+
+                </div>
+
+                <a href="#" class="logo-bottom">
+                    <img src="images/logo-bottom.PNG" alt="하단로고">
+                </a>
+            </div>
+        </footer>
+        <!-- 푸터 끝 -->
+    </div>
+
+    <!-- 우편번호 검색창 -->
+    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer"
+            style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+    </div>
+</body>
+
+<!-- 우편번호 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    var element_layer = document.getElementById('layer');
+
+    function closeDaumPostcode() {
+        element_layer.style.display = 'none';
+    }
+
+    function openZipSearch() {
+        new daum.Postcode({
+            oncomplete: function (data) {
+                var addr = ''; 
+                var extraAddr = ''; 
+                if (data.userSelectedType === 'R') { 
+                    addr = data.roadAddress;
+                } else { 
+                    addr = data.jibunAddress;
+                }
+
+                document.getElementById('postcode1').value = data.zonecode;
+                document.getElementById("addr1").value = addr;
+
+                document.getElementById("addr2").focus();
+
+                element_layer.style.display = 'none';
+            },
+            width: '100%',
+            height: '100%',
+            maxSuggestItems: 5
+        }).embed(element_layer);
+
+        element_layer.style.display = 'block';
+
+        initLayerPosition();
+    }
+    // 우편번호 검색창 위치 //
+    function initLayerPosition() {
+        var width = 500; 
+        var height = 500; 
+        var borderWidth = 5; 
+
+      
+        element_layer.style.width = width + 'px';
+        element_layer.style.height = height + 'px';
+        element_layer.style.border = borderWidth + 'px solid';
+    
+        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width) / 2 - borderWidth) + 'px';
+        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height) / 2 - borderWidth) + 'px';
+    }
+</script>
+
+<!-- 비밀번호 -->
+<script>
+
+    function check_pw() {
+
+        var pw = document.getElementById('new_passwd').value;
+        var SC = ["!", "@", "#", "$", "%"];
+        var check_SC = 0;
+
+        if (pw.length < 4 || pw.length > 16) {
+            window.alert('비밀번호는 4글자 이상, 16글자 이하만 이용 가능합니다.');
+            document.getElementById('new_passwd').value = '';
+        }
+        for (var i = 0; i < SC.length; i++) {
+            if (pw.indexOf(SC[i]) != -1) {
+                check_SC = 1;
+            }
+        }
+        if (check_SC == 0) {
+            window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+            document.getElementById('new_passwd').value = '';
+        }
+        if (document.getElementById('new_passwd').value != '' && document.getElementById('new_passwd_confirm').value != '') {
+            if (document.getElementById('new_passwd').value == document.getElementById('new_passwd_confirm').value) {
+                document.getElementById('check').innerHTML = '비밀번호가 일치합니다.'
+                document.getElementById('check').style.color = 'blue';
+            }
+            else {
+                document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다.';
+                document.getElementById('check').style.color = 'red';
+            }
+        }
+    }
+</script>
+
+
+</html>
