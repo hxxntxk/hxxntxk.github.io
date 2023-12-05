@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+*{
+	margin:0;
+	padding:0;
+	color:#333333  
+}
+body{
+	width: 100%;
+    background-color: #f5f6f7;
+}
+/* 전체 박스 */
+#dg-login{
+    width: 370px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+/* 로고 이미지 */
+.main-logo>a{
+    margin-top: 36px;
+}
+.main-logo>a, .logo>a>img, footer>a, footer>a>img{
+    width: 155px;
+    height: 20px;
+}
+#main-logo{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 155px;
+    height: 20px;
+    margin-top: 36px;
+}
+#main-title img{
+    width: 270px;
+}
+/* 아이디 입력 테이블 */
+#Idtb{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    width: 350px;
+    height: 40px;
+    border: 1px solid #dadada;
+}
+#Idtb input{
+    width: 350px;
+    height: 40px;
+    background-color: #fff;
+    border:  #dadada;
+}
+/* 비밀번호 입력 테이블*/
+#PWtb{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    width: 350px;
+    height: 40px;
+    border: 1px solid #dadada;
+}
+#PWtb input{
+    width: 350px;
+    height: 40px;
+    background-color: #fff;
+    border:  #dadada;
+}
+/* 캡스락 알림 */
+#message{
+    float: right;
+    font-weight: bold;
+    font-size: 14px;
+    color: red;
+    margin-left: 120px;
+}
+/* 로그인 버튼 */
+#loginbt{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5%;
+    height: 40px;
+}
+#loginbt input{
+    width: 365px;
+    height: 50px;
+    background-color: #000;
+    color: white;
+    font-size: 16px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+/* ---------구분선-------- */
+#long{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5%;
+    width: 366px;
+    border: 1px solid #000;
+}
+/* 회원가입 버튼 */
+#sign-up{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5%;
+    height: 40px;
+}
+#sign-up input{
+    width: 365px;
+    height: 50px;
+    background-color: #000;;
+    color: white;
+    font-size: 16px;
+    border: 1px solid #000;;
+    cursor: pointer;
+}
+/* 아이디/비밀번호 찾기 */
+#search{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5%;
+    height: 50px;
+    font-weight: bold;
+}
+/* 로그인 상태유지 체크박스 */
+#loginchk{
+    margin-top: 0.5%;
+    list-style: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+

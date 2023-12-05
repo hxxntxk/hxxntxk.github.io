@@ -1,0 +1,456 @@
+@charset "UTF-8";
+
+*{
+	margin:0 auto;
+	padding:0;
+	list-style:none;
+	color:#333333  /* 컬러 가이드: 기본 텍스트의 색 */
+}
+body{
+	width: 100%;
+	background-color:#ffffff; /* 컬러 가이드: 배경색 */
+	font-size:16px;
+}
+a{
+	text-decoration:none;
+	display:block;
+}
+/* 헤더 푸터 따로묶음 */
+.container{
+    max-width: 1200px;
+    
+}
+/* 헤더 시작 */
+header{
+    width: 100%;
+    height: 170px;
+}
+.logo>a{
+    margin-top: 36px;
+}
+.logo>a, .logo>a>img, footer>a, footer>a>img{
+    width: 155px;
+    height: 20px;
+}
+
+.header-menu-1>nav>ul>li>a:hover{
+    opacity: 0.5;
+}
+
+.menu{
+    background: url(../images/menu_icon.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 999;
+    position: absolute;
+    top: 30px;
+    right: 10px;
+}
+.menu.active{
+    background: url(../images/x_icon.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.3;
+    z-index: 999;
+    top: 30px;
+    right: 10px;
+}
+.menu:hover{
+    opacity: 0.5;
+}
+
+.side_menu{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    text-align: center;
+    background: #fff;
+    z-index: 900;
+    border: 1px solid #dddddd;
+}
+.side_menu>li{
+    padding: 30px;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+}
+.side_menu>li:first-child{
+    margin-top: 90px;
+    border-bottom: none;
+}
+.side_menu>li>a{
+    color: black;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+.side_menu>li>a:hover{
+    opacity: 0.5;
+}
+.side_menu.active{
+    display: block;
+}
+
+.mid-nav>ul>li{
+    width: fit-content;
+    height: 50px; 
+    line-height: 50px;
+}
+
+/* 메뉴 active 시작 */
+.mid-nav>ul>li>div>p>a:hover /* .mid-nav>ul>li>div>p>a:first-child */{
+    color: brown;
+}
+.mid-nav>ul>li>div>p>a.active {
+    color: brown;
+}
+/* 메뉴 active 끝 */
+
+/* 헤더 끝 */
+
+ /* 스크롤 진행 상태바 */
+ .progressbar {
+    position: fixed; /* 페이지 상단에 프로그레스바 고정 */
+    height: 2px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 500;
+}
+.progressbar > .progress {
+    width: 0%; /* 프로그래스바 진행 정도 */
+    height: 100%;
+    transition: width 0.3s ease; /* 부드러운 가속도 애니메이션 추가 */
+    background-color: #a00;
+    margin: 0;
+}
+
+
+/* 컨테이너박스 맥스사이즈 조절 */
+.con {
+    max-width:1200px;
+    height: 100%;
+    background-color: #F8F4F0;
+
+}
+/* 상품소개 페이지 제목 */
+.shop-all{
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.list-box-1 .cell > .free-del {
+    text-align:center;
+    margin-top: -260px;
+    margin-right: 70px;
+}
+.list-box-1 .cell > .free-del > span::after {
+    content:"Best Seller";
+    font-size:0.7rem;
+    border:1px solid #BC4C2A;
+    background-color: rgb(188, 76, 42);
+    color:#fff;
+    padding:2px 10px;
+    border-radius: 30px;
+}
+/* 상품 목록 */
+
+.img-box > img {
+    height: 225px;
+    border-radius: 8%;
+    display:block;
+
+}
+
+/* 상품 정렬 */
+.cell {
+    float:left;
+    box-sizing:border-box;
+}
+.list-box-1 .cell {
+    width:25%;
+    padding:0 10px;
+    margin-top:20px;
+    cursor:pointer;
+}
+.list-box-1 .row {
+    margin:0 -10px;
+}
+.cell img{
+    margin: auto;
+}
+
+
+/* 상품 제목 및 가격 */
+.list-box-1 .cell > .prod-name, .list-box-1 .cell > .prod-price {
+    text-align:center;
+    font-weight:bold;
+    margin-top:5px;
+}
+.list-box-1 .cell > .prod-name{
+    font-size: 0.6rem;
+    font-weight: bold;
+}
+/* 가격 글꼴사이즈 크기조절 */
+.list-box-1 .cell > .prod-price {
+    font-size:0.8rem;
+    font-weight: bold;
+}
+/* 상품 가격 (원)표시 */
+.list-box-1 .cell > .prod-price::after {
+    content:" KRW";
+}
+/* 상품 텍스트 효과 */
+.list-box-1 .cell:hover > .prod-name, .list-box-1 .cell:hover > .prod-price {
+    color:red;
+}
+
+/* 푸터 시작 */
+footer{
+    width: 100%;
+    height: 360px;
+    font-size: 12px;
+    border-top: 1px solid #dddddd;
+}
+.footer-menu{
+    margin-top: 50px;
+    width: 100%;
+    height: 250px;
+}
+.footer-menu>ul{
+    width: 300px;
+    margin-left: 0;
+}
+.footer-menu>ul>li{
+    padding: 2px 0px;
+}
+.footer-menu>ul:first-child>li{
+    display:inline-block;
+    width: fit-content;
+    line-height: 20px;
+    margin-right: 5px;
+}
+.footer-menu>ul>li:last-child{
+    padding-right: 0;
+    border-right: none;
+}
+.footer_bunch_1>li>a:hover{
+    text-decoration: underline;
+}
+.footer_bunch_2{
+    margin-top: 10px;
+}
+.footer_bunch_2 a{
+    display: inline-block;
+    text-decoration: underline;
+}
+.footer_bunch_2>li:first-child{
+    font-weight: bold;
+}
+.footer_bunch_2>li:nth-child(4){
+    margin-top: 20px;
+}
+.footer_bunch_1>span,.footer_bunch_2>li>span{
+    color:#dddddd;
+}
+.sns-lists>a, .sns-lists>a>img{
+    display: inline-block;
+    width: 24px;
+    height: 22px;
+}
+.logo-bottom{
+    width: 150px;
+    height: 20px;
+}
+/* 푸터 끝 */
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+	.container{
+        width: 300px;
+    }
+    .left-blank{
+        width: 20%;
+        height: 89px;
+        float: left;
+    }
+    .logo{
+        width: 60%;
+        height: 89px;
+        float: left;
+    }
+    .header-menu-1,.header-menu-2{
+        width: 20%;
+        height: 89px;
+        float: right;
+    }
+    .header-menu-1{
+        display: none;
+    }
+    .mid-nav{
+        width: 300px;
+        height: 81px;
+    }
+    .mid-nav>ul{
+        width: 100%;
+        height: 81px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .footer-box{
+        width: 300px;
+        height: 330px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .sns-lists{
+        margin-top: 20px;
+    }
+    .con{
+        max-width: 500px;
+        height: 100%;
+    }
+    .list-box-1 .cell {
+        width:50%;
+    }
+}
+@media all and (min-width: 768px) and (max-width: 1199px) {
+
+    .left-blank{
+        width: 33.33%;
+        height: 89px;
+        float: left;
+    }
+    .logo{
+        width: 33.33%;
+        height: 89px;
+        float: left;
+    }
+    .header-menu-1,.header-menu-2{
+        width: 33.33%;
+        height: 89px;
+        float: right;
+    }
+    .header-menu-1>nav{
+        width: 200px;
+        height: 89px;
+        float: right;
+    }
+    .header-menu-1>nav>ul{
+        width: 100%;
+        height: 89px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .menu{
+        display: none;
+    }
+    .mid-nav{
+        width: 500px;
+        height: 81px;
+    }
+    .mid-nav>ul{
+        width: 100%;
+        height: 81px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer-box{
+        width: 600px;
+        height: 330px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .sns-lists{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+    .list-box-1 .cell {
+        width:25%;
+    }
+    .list-box-1 .cell:nth-child(4n + 1) {
+        clear:both;
+    }
+}
+@media all and (min-width: 1200px) and (max-width: 1920px) {
+	.container{
+        width: 1200px;
+    }
+    .left-blank{
+        width: 33.33%;
+        height: 89px;
+        float: left;
+    }
+    .logo{
+        width: 33.33%;
+        height: 89px;
+        float: left;
+    }
+    .header-menu-1,.header-menu-2{
+        width: 33.33%;
+        height: 89px;
+        float: right;
+    }
+    .header-menu-1>nav{
+        width: 200px;
+        height: 89px;
+        float: right;
+    }
+    .header-menu-1>nav>ul{
+        width: 100%;
+        height: 89px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .menu{
+        display: none;
+    }
+    .mid-nav{
+        width: 700px;
+        height: 81px;
+    }
+    .mid-nav>ul{
+        width: 100%;
+        height: 81px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer-box{
+        width: 1200px;
+        height: 330px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .sns-lists{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+    .list-box-1 .cell {
+        width:25%;
+    }
+    .list-box-1 .cell:nth-child(4n + 1) {
+        clear:both;
+    }
+	
+}
